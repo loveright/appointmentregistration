@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @MapperScan("com.by.appregistration.mapper")
-public class HospConfig {
+public class CmnConfig {
     // 分页插件
     @Bean
     public PaginationInterceptor paginationInterceptor() {
