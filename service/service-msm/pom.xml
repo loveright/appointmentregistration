@@ -9,14 +9,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>service-user</artifactId>
+    <artifactId>service-msm</artifactId>
 
     <dependencies>
         <dependency>
-            <groupId>com.by</groupId>
-            <artifactId>service-cmn-client</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-core</artifactId>
         </dependency>
+
     </dependencies>
 
 </project>
