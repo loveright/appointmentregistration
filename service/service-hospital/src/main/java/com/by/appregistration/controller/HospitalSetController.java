@@ -21,7 +21,7 @@ import java.util.Random;
  * @author zhouboyang
  * @version 1.0
  * @ClassName HospitalSetController
- * @description: TODO
+ * @description: 医院设置接口
  * @date 2022/3/11 0:52
  */
 @RestController
