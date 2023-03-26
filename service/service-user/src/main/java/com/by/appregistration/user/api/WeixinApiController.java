@@ -7,7 +7,7 @@ import com.by.appregistration.model.user.UserInfo;
 import com.by.appregistration.user.service.UserInfoService;
 import com.by.appregistration.user.utils.ConstantWxPropertiesUtils;
 import com.by.appregistration.user.utils.HttpClientUtils;
-import com.sun.deploy.net.URLEncoder;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
