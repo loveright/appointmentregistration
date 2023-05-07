@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@MapperScan("com.by.appregistration.mapper")
+@MapperScan("com.by.appregistration.hosp.mapper")
 public class HospConfig {
     // 分页插件
     @Bean

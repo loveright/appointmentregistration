@@ -1,8 +1,9 @@
-package com.by.appregistration.user.controller;
+package com.by.appregistration.cmn.controller;
 
 import com.by.appregistration.common.result.Result;
 import com.by.appregistration.model.cmn.Dict;
-import com.by.appregistration.user.service.DictService;
+import com.by.appregistration.cmn.service.DictService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,9 +19,10 @@ import java.util.List;
  * @description: TODO
  * @date 2022/3/22 22:26
  */
+@Api(description = "数据字典接口")
 @RestController
 @RequestMapping("/admin/cmn/dict")
-@CrossOrigin
+//@CrossOrigin
 public class DictController {
 
     @Autowired
@@ -47,4 +49,29 @@ public class DictController {
         dictService.importDictData(file);
         return Result.ok();
     }
+
+    //根据dictCode获取下级节点
+    @ApiOperation(value = "根据dictCode获取下级节点")
+    @GetMapping("findByDictCode/{dictCode}")
+    public Result findByDictCode(@PathVariable String dictCode) {
+        List<Dict> list = dictService.findByDictCode(dictCode);
+        return Result.ok(list);
+    }
+
+    //根据dictcode和value查询
+    @GetMapping("getName/{dictCode}/{value}")
+    public String getName(@PathVariable String dictCode,
+                          @PathVariable String value) {
+        String dictName = dictService.getDictName(dictCode,value);
+        return dictName;
+    }
+
+    //根据value查询
+    @GetMapping("getName/{value}")
+    public String getName(@PathVariable String value) {
+        String dictName = dictService.getDictName("",value);
+        return dictName;
+    }
+
+
 }

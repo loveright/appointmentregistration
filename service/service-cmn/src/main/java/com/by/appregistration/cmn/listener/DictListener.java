@@ -1,8 +1,8 @@
-package com.by.appregistration.user.listener;
+package com.by.appregistration.cmn.listener;
 
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
-import com.by.appregistration.user.mapper.DictMapper;
+import com.by.appregistration.cmn.mapper.DictMapper;
 import com.by.appregistration.model.cmn.Dict;
 import com.by.appregistration.vo.cmn.DictEeVo;
 import org.springframework.beans.BeanUtils;

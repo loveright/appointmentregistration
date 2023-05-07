@@ -193,6 +193,7 @@ public class ScheduleServiceImpl extends
         List<Date> dateList = iPage.getRecords();
 
         //获取可预约日期里面科室的剩余预约数
+        // 查询mongodb构造条件
         Criteria criteria = Criteria.where("hoscode").is(hoscode).and("depcode").is(depcode)
                 .and("workDate").in(dateList);
 
@@ -349,12 +350,14 @@ public class ScheduleServiceImpl extends
         //获取预约周期
         Integer cycle = bookingRule.getCycle();
         //如果当天放号时间已经过去了，预约周期从后一天开始计算，周期+1
+        // 当前时间比放号时间大
         if(releaseTime.isBeforeNow()) {
             cycle += 1;
         }
         //获取可预约所有日期，最后一天显示即将放号
         List<Date> dateList = new ArrayList<>();
         for(int i=0;i<cycle;i++) {
+            // 当前时间向后推i天后的日期
             DateTime curDateTime = new DateTime().plusDays(i);
             String dateString = curDateTime.toString("yyyy-MM-dd");
             dateList.add(new DateTime(dateString).toDate());

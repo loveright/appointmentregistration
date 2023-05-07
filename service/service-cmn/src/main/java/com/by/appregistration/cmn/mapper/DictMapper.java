@@ -1,4 +1,4 @@
-package com.by.appregistration.user.mapper;
+package com.by.appregistration.cmn.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.by.appregistration.model.cmn.Dict;

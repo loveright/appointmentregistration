@@ -8,7 +8,6 @@ import com.by.appregistration.vo.order.OrderCountQueryVo;
 import com.by.appregistration.vo.order.OrderQueryVo;
 
 import java.util.Map;
-
 public interface OrderService extends IService<OrderInfo> {
 
     //生成挂号订单

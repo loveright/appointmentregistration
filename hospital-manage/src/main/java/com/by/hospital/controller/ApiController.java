@@ -42,7 +42,12 @@ public class ApiController extends BaseController {
 
 	@RequestMapping(value="/hospitalSet/save")
 	public String createHospitalSet(ModelMap model,HospitalSet hospitalSet) {
-		hospitalSetMapper.updateById(hospitalSet);
+		HospitalSet hospitalSet1 = hospitalSetMapper.selectById(hospitalSet.getId());
+		if (hospitalSet1 != null) {
+			hospitalSetMapper.updateById(hospitalSet);
+		}else {
+			hospitalSetMapper.insert(hospitalSet);
+		}
 		return "redirect:/hospitalSet/index";
 	}
 
@@ -130,7 +135,6 @@ public class ApiController extends BaseController {
 				this.failureMessage("先设置医院code与签名key", redirectAttributes);
 				return "redirect:/hospitalSet/index";
 			}
-
 			model.addAllAttributes(apiService.findSchedule(pageNum, pageSize));
 		} catch (YyghException e) {
 			this.failureMessage(e.getMessage(), request);
