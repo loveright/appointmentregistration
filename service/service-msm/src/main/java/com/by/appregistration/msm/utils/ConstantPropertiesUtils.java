@@ -22,9 +22,9 @@ public class ConstantPropertiesUtils implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        REGION_Id=regionId;
-        ACCESS_KEY_ID=accessKeyId;
-        SECRECT=secret;
+        REGION_Id = regionId;
+        ACCESS_KEY_ID = accessKeyId;
+        SECRECT = secret;
     }
 }
 

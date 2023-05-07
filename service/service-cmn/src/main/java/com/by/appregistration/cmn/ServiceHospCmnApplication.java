@@ -1,7 +1,8 @@
-package com.by.appregistration.user;
+package com.by.appregistration.cmn;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.ComponentScan;
 
 /**
@@ -13,6 +14,7 @@ import org.springframework.context.annotation.ComponentScan;
  */
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.by"})
+@EnableDiscoveryClient
 public class ServiceHospCmnApplication {
     public static void main(String[] args) {
         SpringApplication.run(ServiceHospCmnApplication.class, args);

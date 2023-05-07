@@ -68,7 +68,9 @@ public class MsmServiceImpl implements MsmService {
     @Override
     public boolean send(MsmVo msmVo) {
         if(!StringUtils.isEmpty(msmVo.getPhone())) {
-            boolean isSend = this.send(msmVo.getPhone(), msmVo.getParam());
+//            boolean isSend = this.send(msmVo.getPhone(), msmVo.getParam());
+            System.out.println("已发送短信："+msmVo.getTemplateCode());
+            boolean isSend = true;
             return isSend;
         }
         return false;

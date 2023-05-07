@@ -1,11 +1,9 @@
 package com.by.appregistration.order.service;
 
 
-import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
-//@Component
 public interface WeixinService {
 
     //生成微信支付二维码

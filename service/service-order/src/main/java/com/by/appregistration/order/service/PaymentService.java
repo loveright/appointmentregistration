@@ -6,7 +6,6 @@ import com.by.appregistration.model.order.OrderInfo;
 import com.by.appregistration.model.order.PaymentInfo;
 
 import java.util.Map;
-
 public interface PaymentService extends IService<PaymentInfo> {
 
     //向支付记录表添加信息

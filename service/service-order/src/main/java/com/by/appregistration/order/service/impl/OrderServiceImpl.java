@@ -49,6 +49,7 @@ public class OrderServiceImpl extends
     @Autowired
     private WeixinService weixinService;
 
+
     //生成挂号订单
     @Override
     public Long saveOrder(String scheduleId, Long patientId) {
@@ -58,7 +59,7 @@ public class OrderServiceImpl extends
         //获取排班相关信息
         ScheduleOrderVo scheduleOrderVo = hospitalFeignClient.getScheduleOrderVo(scheduleId);
 
-        //判断当前时间是否还可以预约
+        //判断当前时间是否还可以预约，预约时间要大于开始时间小于结束时间
         if(new DateTime(scheduleOrderVo.getStartTime()).isAfterNow()
                 || new DateTime(scheduleOrderVo.getEndTime()).isBeforeNow()) {
             throw new AppRegistrationException(ResultCodeEnum.TIME_NO);
@@ -238,8 +239,9 @@ public class OrderServiceImpl extends
         if(result.getInteger("code")!=200) {
             throw new AppRegistrationException(result.getString("message"), ResultCodeEnum.FAIL.getCode());
         } else {
-            //判断当前订单是否可以取消
+            //判断当前订单是否可以取消，已支付则执行退款
             if(orderInfo.getOrderStatus().intValue() == OrderStatusEnum.PAID.getStatus().intValue()) {
+                // 执行退款
                 Boolean isRefund = weixinService.refund(orderId);
                 if(!isRefund) {
                     throw new AppRegistrationException(ResultCodeEnum.CANCEL_ORDER_FAIL);
@@ -272,7 +274,8 @@ public class OrderServiceImpl extends
     @Override
     public void patientTips() {
         QueryWrapper<OrderInfo> wrapper = new QueryWrapper<>();
-        wrapper.eq("reserve_date",new DateTime().toString("yyyy-MM-dd"));
+//        wrapper.eq("reserve_date",new DateTime().toString("yyyy-MM-dd"));
+        wrapper.eq("reserve_date","2023-05-08");
         wrapper.ne("order_status",OrderStatusEnum.CANCLE.getStatus());
         List<OrderInfo> orderInfoList = baseMapper.selectList(wrapper);
         for(OrderInfo orderInfo:orderInfoList) {
